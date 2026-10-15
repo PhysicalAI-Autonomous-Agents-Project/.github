@@ -1,18 +1,15 @@
 <div align="center">
 
-<img src="https://avatars.githubusercontent.com/u/339455164?s=200&v=4" width="110" alt="PhysicalAI Autonomous Agents Project" />
+# 자율행동체를 위한 온디바이스 자연어 처리 고속 작업 명세 생성 기술 개발
 
-# [PhysicalAI] Autonomous Agents Project
-### 자율행동체를 위한 온디바이스 자연어 처리 고속 작업 명세 생성 기술 개발
+![과제번호](https://img.shields.io/badge/과제번호-RS--2026--25520654-1e2327)
+![기간](https://img.shields.io/badge/기간-2026.04~2029.12-6c757d)
 
-[![과제번호](https://img.shields.io/badge/IITP-RS--2026--25520654-1e2327)](https://www.iitp.kr)
-![기간](https://img.shields.io/badge/기간-2026.04~2029.12-blue)
-![주관](https://img.shields.io/badge/주관-ETRI-0054a6)
-![TRL](https://img.shields.io/badge/TRL-4→7-orange)
+![주관](https://img.shields.io/badge/주관-ETRI-003f8e)
+![참여](https://img.shields.io/badge/참여-연세대%20%7C%20KIST%20%7C%20모빌린트%20%7C%20에이로봇%20%7C%20KCIA-2f6fc4)
+![위탁](https://img.shields.io/badge/위탁-한국과학기술원-6fa3e0)
+
 ![공개SW](https://img.shields.io/badge/공개SW-Apache--2.0%20%7C%20MIT-green)
-![도메인](https://img.shields.io/badge/도메인-제조·물류·가사-6f42c1)
-![ROS2](https://img.shields.io/badge/ROS-2-22314E?logo=ros&logoColor=white)
-![NPU](https://img.shields.io/badge/국산%20NPU-2종%20이상-red)
 
 [한국어](./README.md) · [English](./README.en.md)
 
@@ -36,7 +33,7 @@
 | 과제번호 | RS-2026-25520654 |
 | 연구기간 | 2026.04 ~ 2029.12 (3년 9개월) |
 | 시행 / 전담 | 과학기술정보통신부(MSIT) / 정보통신기획평가원(IITP) |
-| 연구유형 | 개발연구, TRL 4 → 7, 공개 SW, 기술료 비징수 |
+| 연구유형 | 개발연구, TRL 4 → 7, 공개 SW|
 
 ### 참여 기관
 
@@ -55,8 +52,8 @@
 ## 2. 전체 구성
 
 <p align="center">
-  <img src="./profile/assets/overview.png" width="860" alt="세부 1 연구목표 개요도" />
-  <br/><sub>그림 1. 전체 구성 — 자연어 입력부터 모니터링까지의 파이프라인과 기관별 담당 영역</sub>
+  <img src="./images/01-overview.png" width="860" alt="세부 1 연구목표 개요도" />
+  <br/><sub>전체 구성 — 자연어 입력부터 모니터링까지의 파이프라인과 기관별 담당 영역</sub>
 </p>
 
 - 파이프라인: **작업이해(연세대) → 명세생성(KIST) → 종합상황정보 구축 · 미션 수행 요청 · 모니터링/미션관리(ETRI)**
@@ -68,8 +65,8 @@
 ## 3. 명세 생성의 범위
 
 <p align="center">
-  <img src="./profile/assets/pipeline-ecot.png" width="860" alt="Embodied CoT 대비 명세 생성 범위" />
-  <br/><sub>그림 2. 담당 범위(점선) — Embodied Chain-of-Thought<sup>[1]</sup>의 Input ~ SUBTASK 구간. 이후 MOVE/ACTION 구간은 VLA/VLM 담당</sub>
+  <img src="./images/02-spec-scope.png" width="860" alt="Embodied CoT 대비 명세 생성 범위" />
+  <br/><sub>담당 범위(점선) — Embodied Chain-of-Thought<sup>[1]</sup>의 Input ~ SUBTASK 구간. 이후 MOVE/ACTION 구간은 VLA/VLM 담당</sub>
 </p>
 
 - 범위: **사용자 명령 이해 + 복합 작업 명세 생성**
@@ -88,26 +85,14 @@
 
 ---
 
-## 4. 오케스트레이션 플랫폼 (초안)
+## 4. 세부 연구
+
+### 세부연구 1 — 작업 상황 이해 및 명세화를 위한 SLM 학습·추론·평가
 
 <p align="center">
-  <img src="./profile/assets/orchestration.png" width="860" alt="ROS2 기반 오케스트레이션 플랫폼 시퀀스" />
-  <br/><sub>그림 3. "컵을 치워줘" 시나리오의 ROS2 기반 오케스트레이션 시퀀스</sub>
+  <img src="./images/04-r1-slm-roadmap.png" width="860" alt="세부연구 1 SLM 학습·추론·평가 기술 개발 로드맵" />
+  <br/><sub>세부연구 1 (연세대 · ETRI) — 체크리스트 기반 정량 평가 표준을 축으로 한 SLM 학습·추론·평가 로드맵</sub>
 </p>
-
-1. **작업 이해 요청** — "컵을 치워줘" → STT → 상황 이해 LLM(경험/지식 메모리) → *"테이블에 있는 컵을 싱크대로 옮겨라"* + 작업 상황 요소
-2. **세부 명세 생성 요청** — 복합 작업 명세 생성 → PLAN · SubTask (*1. 컵 앞으로 이동, 2. 컵을 집는다, …*)
-3. **종합 상황정보 구축** — 명세 수행·관리용 자료구조 생성
-4. **미션 수행 & 모니터링** — 단위 작업별 실행 요청, Done/Fail 수신
-   - 4.1 Fail 시 **세부 명세 생성 재요청**
-
-> **실증 원칙:** VLM/VLA 미사용 시에도 이동(V-SLAM, NAV2)·작업(MoveIt, CNN) 명령이 라이브러리 API를 통해 로봇의 정해진 동작으로 수행됨을 확인
-
----
-
-## 5. 세부 연구
-
-### 세부연구 1 — 작업 상황 이해 및 명세화를 위한 SLM 학습·추론·평가 `연세대 · ETRI`
 
 - 작업 목표·시공간 조건·제약 사항을 포함한 **구조화된 작업 상황 설명문** 생성 및 체크리스트 기반 정량 평가 체계 구축
 - 선택학습 기반 중간 학습 + 소형 모델 분포 정합성 기반 후속 학습으로 작업 이해 추론 능력 내재화
@@ -120,7 +105,12 @@
 | 중간 평가 신호 결여 | 체크리스트 기반 품질 평가 → 데이터·학습·RL 보상까지 일관 연결 |
 | 단절된 경험 처리 · 휘발성 메모리 — 전체 재학습 | 경험 지식 메모리 갱신 기반 지속 학습 |
 
-### 세부연구 2 — 종합 상황 정보 기반 작업 명세 생성 및 사용자 경험 평가 `KIST · ETRI`
+### 세부연구 2 — 종합 상황 정보 기반 작업 명세 생성 및 사용자 경험 평가
+
+<p align="center">
+  <img src="./images/05-r2-spec-generation.png" width="860" alt="세부연구 2 종합 상황 정보 기반 작업 명세 생성" />
+  <br/><sub>세부연구 2 (KIST · ETRI) — 작업 이해 결과 기반 명세 생성 · 유효성 평가 · 단위 작업별 고수준 정책 생성</sub>
+</p>
 
 - 작업 이해 결과 + 온디바이스 LLM 기반 **복합 작업(Long-Horizon Task) 명세 생성**
 - 종합 상황 정보(Robot · CCTV · 작업 목표/상황/로봇 상황)와 상호 검토를 통한 **명세 유효성 추론·보완** — 논리적 유효성 · 선후 관계 · 환경 적합성
@@ -132,7 +122,12 @@
 | 규칙 기반(Rule-based) 정적 명세 — 비구조적 환경 대응 한계 | CoT 기반 계층적 추론으로 동적 명세 생성 |
 | 고정된 명세 — 유연성 부족 | 유효성 검증 + 자가 교정으로 계획–실행 간극 해소 |
 
-### 세부연구 3 — 지능형 오케스트레이션 및 모델 파이프라인 통합 플랫폼 `ETRI`
+### 세부연구 3 — 지능형 오케스트레이션 및 모델 파이프라인 통합 플랫폼
+
+<p align="center">
+  <img src="./images/06-r3-orchestrator-core.png" width="860" alt="세부연구 3 오케스트레이터 코어 구조" />
+  <br/><sub>세부연구 3 (ETRI) — 오케스트레이터 코어: 종합상황정보 구축 → VLM/VLA Task 실행·관리 → Task 결과 평가</sub>
+</p>
 
 - 과제 간 연계를 지원하는 **중앙 제어 허브**
 - 환경·센서·미션·리소스 부하 기반 **AI 모델 · 이종 NPU 동적 재배치** (실시간 파이프라인 재구성)
@@ -149,7 +144,7 @@
 
 ---
 
-## 6. 최종 결과물 (End Product)
+## 5. 최종 결과물 (End Product)
 
 | # | 결과물 | 세부연구 | 형태 |
 |---|---|---|---|
@@ -165,7 +160,7 @@
 
 ---
 
-## 7. 적용 범위
+## 6. 적용 범위
 
 | 도메인 | 적용 서비스 |
 |---|---|
@@ -176,7 +171,7 @@
 
 ---
 
-## 8. 공개 SW 로드맵
+## 7. 공개 SW 로드맵
 
 13종 SW 및 도메인별 데이터셋을 **Apache 2.0 / MIT** 라이선스로 연차별 공개
 
@@ -198,15 +193,8 @@
 
 ---
 
-## 9. 저장소 구성
+## 8. 저장소 구성
 
-| 저장소 | 설명 | 기관 |
-|---|---|---|
-| `.github` | 조직 프로필 및 공통 템플릿 (본 문서) | ETRI |
-| | | |
-| | | |
-| | | |
-| | | |
 
 ---
 
