@@ -72,14 +72,6 @@
 - 범위: **사용자 명령 이해 + 복합 작업 명세 생성**
 - 핵심 산출물: 생성된 명세의 **하위 작업 분배(VLA/VLM) 및 모니터링**을 담당하는 작업 명세 오케스트레이터
 
-| 단계 | 기능 | 담당 |
-|---|---|---|
-| ① 자연어 입력 | 음성/텍스트 명령 수신 (STT) | — |
-| ② 작업이해 | 상황 이해 LLM + 경험/지식 메모리 → 작업 상황 설명문 | 연세대 |
-| ③ 명세생성 | 복합 작업 명세 생성 (PLAN · SubTask) | KIST |
-| ④ 종합상황정보 구축 | 명세 수행·관리용 자료구조 구성 | ETRI |
-| ⑤ 미션 수행 요청 | 단위 작업을 VLA/VLM/라이브러리 API로 분배 | ETRI |
-| ⑥ 모니터링 & 미션관리 | Done/Fail 추적, 실패 시 세부 명세 재생성 요청 | ETRI |
 
 <sub>[1] M. Zawalski et al., "Robotic Control via Embodied Chain-of-Thought Reasoning," CoRL 2024. https://arxiv.org/abs/2407.08693</sub>
 
